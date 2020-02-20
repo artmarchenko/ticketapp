@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>TicketApp</title>
+</head>
+<body>
+<div class="container">
+    <h1>Route List</h1>
+    <a href="newroute">Create New Route</a>
+    <br/><br/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Route ID</th>
+            <th scope="col">Departure city</th>
+            <th scope="col">Arrival city</th>
+            <th scope="col">Departure time</th>
+            <th scope="col">Arrival time</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row" th:each="route : ${routeList}">
+            <td th:text="${route.id}">Product ID</td>
+            <td th:text="${route.startPoint}">Departure city</td>
+            <td th:text="${route.endPoint}">Arrival city</td>
+            <td th:text="${route.departure}">Departure timee</td>
+            <td th:text="${route.arrival}">Arrival time</td>
+            <td th:text="${route.price}">Price</td>
+            <td>
+                <a th:href="@{'/edit/' + ${route.id}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;
+                <a class="text-danger" th:href="@{'/delete/' + ${route.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
