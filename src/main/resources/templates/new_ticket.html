@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Create New Route</title>
+</head>
+<body>
+<div class="container">
+    <h1>Create New Tickets</h1>
+    <br />
+    <form action="#" th:action="@{/saveticket}" th:object="${ticket}" method="post">
+
+        <table class="table">
+            <tr scope="row">
+                <td>Route Id:</td>
+                <td><input type="text" th:field="*{routeid}" th:value="${route.id}"/></td>
+            </tr>
+            <tr scope="row">
+                <td>Departure city:</td>
+                <td><input type="text"  th:value="${route.startpoint}"/></td>
+            </tr>
+            <tr scope="row">
+                <td>Arrival city:</td>
+                <td><input type="text" th:value="${route.endpoint}" /></td>
+            </tr>
+            <tr scope="row">
+                <td>seat:</td>
+                <td><input type="text" th:field="*{seat}" /></td>
+            </tr>
+            <tr scope="row">
+                <td>Name:</td>
+                <td><input type="text" th:field="*{passangername}" /></td>
+            </tr>
+            <tr scope="row">
+                <td>SName:</td>
+                <td><input type="text" th:field="*{passangersecondname}" /></td>
+            </tr>
+
+
+            <tr scope="row">
+                <td colspan="2"><button type="submit" class="btn btn-secondary">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>TicketApp</title>
+</head>
+<body>
+<div class="container">
+    <h1>Ticket List</h1>
+<!--    <a href="newroute">Create New Route</a>-->
+    <br/><br/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Ticket ID</th>
+            <th scope="col">Route ID</th>
+            <th scope="col">Seat</th>
+            <th scope="col">Passanger name</th>
+            <th scope="col">Passanger second name</th>
+<!--            <th scope="col">Departure city</th>-->
+<!--            <th scope="col">Arrival city</th>-->
+<!--            <th scope="col">Departure time</th>-->
+<!--            <th scope="col">Arrival time</th>-->
+<!--            <th scope="col">Price</th>-->
+<!--            <th scope="col">Is paid</th>-->
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row" th:each="ticket : ${ticketList}">
+            <td th:text="${ticket.id}">Ticket ID</td>
+            <td th:text="${ticket.routeid}">Route ID</td>
+            <td th:text="${ticket.seat}">Route ID</td>
+            <td th:text="${ticket.passangername}">Passanger name</td>
+            <td th:text="${ticket.passangersecondname}">Passanger second name</td>
+<!--            <td th:text="${ticket.route.startpoint}">Departure city</td>-->
+<!--            <td th:text="${ticket.route.endpoint}">Arrival city</td>-->
+<!--            <td th:text="${ticket.route.departure}">Departure time</td>-->
+<!--            <td th:text="${ticket.route.arrival}">Arrival time</td>-->
+<!--            <td th:text="${ticket.route.price}">Price</td>-->
+<!--            <td th:text="${ticket.statuspay}">Price</td>-->
+            <td>
+<!--                <a th:href="@{'/editticket/' + ${ticket.id}}">Edit</a>-->
+                &nbsp;&nbsp;&nbsp;
+                <a class="text-danger" th:href="@{'/deleteticket/' + ${ticket.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
