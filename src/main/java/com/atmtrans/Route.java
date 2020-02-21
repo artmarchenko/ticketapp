@@ -7,9 +7,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Route {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String startPoint;
-    private String endPoint;
+    private String startpoint;
+    private String endpoint;
     private String departure;
     private String arrival;
     private float price;
@@ -17,17 +19,14 @@ public class Route {
     public Route() {
     }
 
-    public Route(Long id, String startPoint, String endPoint, String departure, String arrival, float price) {
-        this.id = id;
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
+    public Route(String startpoint, String endpoint, String departure, String arrival, float price) {
+        this.startpoint = startpoint;
+        this.endpoint = endpoint;
         this.departure = departure;
         this.arrival = arrival;
         this.price = price;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -36,20 +35,20 @@ public class Route {
         this.id = id;
     }
 
-    public String getStartPoint() {
-        return startPoint;
+    public String getStartpoint() {
+        return startpoint;
     }
 
-    public void setStartPoint(String startPoint) {
-        this.startPoint = startPoint;
+    public void setStartpoint(String startpoint) {
+        this.startpoint = startpoint;
     }
 
-    public String getEndPoint() {
-        return endPoint;
+    public String getEndpoint() {
+        return endpoint;
     }
 
-    public void setEndPoint(String endPoint) {
-        this.endPoint = endPoint;
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 
     public String getDeparture() {

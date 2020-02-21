@@ -14,49 +14,23 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AppController {
 
-	@Autowired
-	private ProductService service;
 
 	@Autowired
 	private RouteService routeService;
+
+	@Autowired
+	private TicketService ticketService;
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		List<Product> listProducts = service.listAll();
-		model.addAttribute("listProducts", listProducts);
+
 		
 		return "index";
 	}
 	
-	@RequestMapping("/new")
-	public String showNewProductPage(Model model) {
-		Product product = new Product();
-		model.addAttribute("product", product);
-		
-		return "new_product";
-	}
-	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("product") Product product) {
-		service.save(product);
-		
-		return "redirect:/";
-	}
-	
-	@RequestMapping("/edit/{id}")
-	public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
-		ModelAndView mav = new ModelAndView("edit_product");
-		Product product = service.get(id);
-		mav.addObject("product", product);
-		
-		return mav;
-	}
-	
-	@RequestMapping("/delete/{id}")
-	public String deleteProduct(@PathVariable(name = "id") int id) {
-		service.delete(id);
-		return "redirect:/";		
-	}
+
+
+	//Routes mapping
 
 	@RequestMapping("/routes")
 	public String showAllRoutes(Model model){
@@ -78,5 +52,58 @@ public class AppController {
 
 		return "redirect:/routes";
 	}
+
+    @RequestMapping("/deleteroute/{id}")
+    public String deleteRoute(@PathVariable(name = "id") int id) {
+        routeService.delete(id);
+        return "redirect:/routes";
+    }
+
+    @RequestMapping("/editroute/{id}")
+    public ModelAndView showEditRoutePage(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("edit_route");
+        Route route = routeService.get(id);
+        mav.addObject("route", route);
+
+        return mav;
+    }
+
+    //Tickets mapping
+
+	@RequestMapping("/tickets")
+	public String showAllTickets(Model model){
+		List<Ticket> ticketList = ticketService.listAll();
+		model.addAttribute("ticketList", ticketList);
+		return "ticket_list";
+	}
+
+	@RequestMapping("/newticket/{id}")
+    public ModelAndView shoeNewTicketPage(@PathVariable(name = "id") int id){
+        ModelAndView mav = new ModelAndView("new_ticket");
+	    Route route = routeService.get(id);
+	    Ticket ticket = new Ticket();
+
+
+        mav.addObject("route", route);
+        mav.addObject("ticket", ticket);
+        return mav;
+	}
+
+	@RequestMapping(value = "/saveticket", method = RequestMethod.POST)
+	public String saveTicket(@ModelAttribute("ticket") Ticket ticket) {
+		ticketService.save(ticket);
+
+		return "redirect:/tickets";
+	}
+
+	@RequestMapping("/deleteticket/{id}")
+	public String deleteTicket(@PathVariable(name = "id") int id) {
+		ticketService.delete(id);
+		return "redirect:/tickets";
+	}
+
+
+
+
 
 }
