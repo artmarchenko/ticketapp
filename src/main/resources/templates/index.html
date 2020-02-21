@@ -11,35 +11,12 @@
 </head>
 <body>
 <div class="container">
-    <h1>Product List</h1>
-    <a href="new">Create New Product</a>
+    <h1>Welcome!</h1>
+    <a href="routes">View routes</a>
     <br/><br/>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Product ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Made In</th>
-                <th scope="col">Price</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr scope="row" th:each="product : ${listProducts}">
-            	<td th:text="${product.id}">Product ID</td>
-                <td th:text="${product.name}">Name</td>
-                <td th:text="${product.brand}">Brand</td>
-                <td th:text="${product.madein}">Made in</td>
-                <td th:text="${product.price}">Price</td>
-                <td>
-                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
-                	&nbsp;&nbsp;&nbsp;
-                	<a class="text-danger" th:href="@{'/delete/' + ${product.id}}">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <a href="tickets">View tickets</a>
+    <br/><br/>
+
 </div>    
 </body>
 </html>

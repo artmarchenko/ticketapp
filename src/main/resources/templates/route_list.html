@@ -28,16 +28,19 @@
         </thead>
         <tbody>
         <tr scope="row" th:each="route : ${routeList}">
-            <td th:text="${route.id}">Product ID</td>
-            <td th:text="${route.startPoint}">Departure city</td>
-            <td th:text="${route.endPoint}">Arrival city</td>
-            <td th:text="${route.departure}">Departure timee</td>
+            <td th:text="${route.id}">Route ID</td>
+            <td th:text="${route.startpoint}">Departure city</td>
+            <td th:text="${route.endpoint}">Arrival city</td>
+            <td th:text="${route.departure}">Departure time</td>
             <td th:text="${route.arrival}">Arrival time</td>
             <td th:text="${route.price}">Price</td>
             <td>
-                <a th:href="@{'/edit/' + ${route.id}}">Edit</a>
+                <a th:href="@{'/editroute/' + ${route.id}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;
-                <a class="text-danger" th:href="@{'/delete/' + ${route.id}}">Delete</a>
+                <a class="text-danger" th:href="@{'/deleteroute/' + ${route.id}}">Delete</a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/newticket/' + ${route.id}}">Add ticket</a>
+
             </td>
         </tr>
         </tbody>
